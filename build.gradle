@@ -1,0 +1,54 @@
+plugins {
+    id 'org.springframework.boot' version '2.1.2.RELEASE'
+    id 'io.spring.dependency-management' version '1.0.9.RELEASE'
+    id 'java'
+}
+
+group = 'com.actionzh'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '1.8'
+
+repositories {
+    mavenCentral()
+}
+
+dependencyManagement {
+    imports {
+        mavenBom "org.springframework.cloud:spring-cloud-dependencies:Greenwich.RELEASE"
+    }
+}
+
+dependencies {
+    implementation 'org.springframework.boot:spring-boot-starter'
+    compile "org.springframework.boot:spring-boot-starter-web"
+    testImplementation('org.springframework.boot:spring-boot-starter-test') {
+        exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
+    }
+    compile "mysql:mysql-connector-java:5.1.47"
+    compile 'org.springframework.boot:spring-boot-starter-batch'
+    compile 'org.apache.poi:poi:3.16'
+    compile "org.apache.poi:poi-ooxml:3.16"
+    compile "commons-io:commons-io:2.5"
+    compileOnly "org.projectlombok:lombok:1.18.4"
+    compile 'joda-time:joda-time'
+    compile 'com.google.guava:guava:20.0'
+    compile "org.apache.commons:commons-text:1.6"
+    compile "net.sourceforge.jexcelapi:jxl:2.6.12"
+    compile "javax.validation:validation-api:2.0.1.Final"
+    compile "org.hibernate:hibernate-validator:6.0.14.Final"
+    compile "org.eclipse.persistence:javax.persistence:2.1.1"
+    compile("org.eclipse.persistence:eclipselink:2.7.0") {
+        // https://bugs.eclipse.org/bugs/show_bug.cgi?id=525457
+        exclude module: "org.eclipse.persistenc:javax.persistence"
+    }
+    compile("org.springframework.boot:spring-boot-starter-data-jpa") {
+        exclude module: "hibernate-entitymanager"
+        exclude module: "hibernate-core"
+    }
+    compile "org.javassist:javassist:3.19.0-GA"
+    compile "com.fasterxml.uuid:java-uuid-generator:3.1.5"
+}
+
+test {
+    useJUnitPlatform()
+}
