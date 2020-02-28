@@ -28,6 +28,8 @@ public class AppConfig {
 
     @Value("${batch.skip.limit}")
     private int batchSkipLimit;
+    @Value("${app.exportTask.maxRow:100000}")
+    private int exportMaxRow;
 
 
 }

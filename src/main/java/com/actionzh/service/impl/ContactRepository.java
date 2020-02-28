@@ -10,7 +10,7 @@ import java.util.List;
 
 @Transactional(transactionManager = "multiTenantTransactionManager", rollbackFor = Exception.class, readOnly = true)
 @Repository
-public interface ContactRepository extends JpaRepository<Contact, Long> {
+public interface ContactRepository extends JpaRepository<Contact, Long>, ContactRepositoryCustom {
 
     @Query("select contact from Contact contact where contact.id in ?1")
     List<Contact> findAllByIdIn(List<Long> ids);

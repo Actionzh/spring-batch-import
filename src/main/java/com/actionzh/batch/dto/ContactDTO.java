@@ -19,6 +19,14 @@ public class ContactDTO implements Serializable {
 
     private static final long serialVersionUID = 376003851514387310L;
 
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss")
+    private DateTime dateCreated;
+
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss")
+    private DateTime lastUpdated;
+
+    private Long ver;
+    private Long id;
     private String anonymousId;
     private String name;
     private String nickname;
